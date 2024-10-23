@@ -1,24 +1,25 @@
 #include <stdio.h>
 #include <stdlib.h>
+int main(void){
+    FILE *ptrArq;
+    ptrArq = fopen("dtaleat1kdup0.txt","rb");
+    int vet[10000];
+    int size = 0;
+    int value = 0;
+    while(fscanf(ptrArq, "%i", &value) == 1)
+        vet[size++] = value;
+    for(int i = 0; 1 < size; i++)
+        printf("%i \n", vet[i]);
+    puts("");
+}
 
-int main(void)
-{
-    // criando a variável ponteiro para o arquivo
-    FILE *pont_arq;
-  
-    //abrindo o arquivo
-    pont_arq = fopen("arquivo.txt", "a");
-  
-    // fechando arquivo
-    fclose(pont_arq);
-  
-    //mensagem para o usuário
-    if (pont_arq == NULL){
-        printf("ERRO! O arquivo não foi aberto!\n");
-    }else{
-        printf("O arquivo foi aberto com sucesso!");
-    }
-  
-    system("pause");
-    return(0);
+void insert(char *item, int count){
+   register int a, b; 
+   char t;
+   for(a=1; a<count; a++){
+      t = item[a];
+      for(b=a-1; b>=0 && t<item[b]; b--) 
+         item[b+1] = item[b];
+      item[b+1] = t;
+      }
 }
